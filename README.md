@@ -71,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ## Install
-`npm add react-router-dom @reduxjs/toolkit axios`
+`npm add react-router-dom react-redux @reduxjs/toolkit axios`
