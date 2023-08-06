@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import AppRoutes from '../Routes/Routes';
 import Header from '../Header/Header';
+import UserForm from '../User/UserForm';
 import Sidebar from '../Sidebar/Sidebar';
 import Footer from '../Footer/Footer';
 
@@ -21,6 +22,8 @@ const App = () => {
   return (
     <div className="app">
       <Header />
+      <UserForm />
+
       <div className="container">
         <Sidebar />
         <AppRoutes />

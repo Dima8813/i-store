@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Platzi Fake Store API
+[Fakeapi.platzi.com](https://fakeapi.platzi.com/en/rest/introduction)
+
 ## Available Scripts
 
 In the project directory, you can run:
