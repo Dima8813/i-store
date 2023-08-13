@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ROUTES } from '../../utils/routes';
-
+import { useGetProductsQuery } from '../../features/api/apiSlice';
 import { toggleForm } from '../../features/user/userSlice';
 
 import LOGO from '../../images/logo.svg';
@@ -13,9 +13,12 @@ import styles from '../../styles/Header.module.css';
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {currentUser} = useSelector(({user}) => user);
 
+  const {currentUser} = useSelector(({user}) => user);
   const [values, setValues] = useState({name: 'Guest', avatar: AVATAR});
+  const [searchValue, setSearchValue] = useState('');
+
+  const {data, isLoading} = useGetProductsQuery({title: searchValue});
 
   useEffect(() => {
     if(!currentUser) return;
@@ -29,6 +32,10 @@ const Header = () => {
     } else {
       navigate(ROUTES.PROFILE)
     }
+  }
+
+  const handleSearch = ({target: {value}}) => {
+    setSearchValue(value)
   }
 
   return (
@@ -58,11 +65,26 @@ const Header = () => {
               name="search"
               placeholder="Search..."
               autoComplete="off"
-              onChange={() => {}}
+              value={searchValue}
+              onChange={handleSearch}
             />
           </div>
 
-          {false && <div className={styles.box}></div>}
+          {searchValue && <div className={styles.box}>
+            {isLoading ? 'Loading' : !data.length ? 'No results' : (
+              data.map(({title, images, id}) => (
+                <Link
+                  key={id}
+                  onClick={() => setSearchValue('')}
+                  to={`products/${id}`}
+                  className={styles.item}
+                >
+                  <div className={styles.image} style={{backgroundImage: `url(${images[0]})`}} />
+                  <div>{title}</div>
+                </Link>
+              ))
+            )}
+          </div>}
         </form>
 
         <div className={styles.account}>

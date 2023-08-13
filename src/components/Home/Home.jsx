@@ -9,7 +9,7 @@ import Banner from '../Banner/Banner';
 import { filterByPrice } from '../../features/products/productsSlice';
 
 const Home = () => {
-  const defaultLEssPrice = 100;
+  const defaultLEssPrice = 200;
   const {products: { list, filtered }, categories} = useSelector((state) => state);
   const dispatch = useDispatch();
 
