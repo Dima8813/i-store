@@ -5,7 +5,6 @@ body {
   font-family: Montserrat, Roboto, sans-serif;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
   color: #fff;
   font-weight: 500;
   padding-bottom: 20px;
@@ -107,9 +106,8 @@ h2 {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 
 input[type="number"] {
