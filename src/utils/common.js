@@ -3,7 +3,7 @@ export const shuffle = (arr) => [...arr].sort(() => .5 - Math.random());
 export const buildUrl = (url, params) => {
   let urlWithParams = url;
 
-  Object.entries(params).forEach(([key, value, i]) => {
+  Object.entries(params).forEach(([key, value], i) => {
     const sign = !i ? '?' : '&';
     urlWithParams += `${sign}${key}=${value}`
   })
